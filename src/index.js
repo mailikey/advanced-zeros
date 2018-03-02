@@ -2,11 +2,13 @@ module.exports = function getZerosCount(number, base) {
     let i = 1;// степень сс
     let ZeroCount = 0;
     let AllZeroz = 0;
-    let NOD;
+    let NOD = 0;
     for(let j = 1; j <= base; j++) {
-        NOD = number % j === 0 ? j : NOD;
+        if(base % j  === 0){
+          if (j === base  && NOD !== 1) break;
+          NOD = j;
+        }
     }
-    console.log(NOD);
     while(i < 256){
         ZeroCount = number/Math.pow(NOD, i);// делим number на систему счисления в степени i
         i++;
@@ -30,3 +32,20 @@ while(Zerozcount >= 1){
     AllZeroz = Math.floor(Zerozcount + AllZeroz);
 }
 return Math.floor(AllZeroz);*/
+
+/*module.exports = function getZerosCount(number, base) {
+    let i = 1;// степень сс
+    let ZeroCount = 0;
+    let AllZeroz = 0;
+    let NOD;
+    for(let j = 1; j <= base; j++) {
+        NOD = number % j === 0 ? j : NOD;
+    }
+    console.log(NOD);
+    while(i < 256){
+        ZeroCount = number/Math.pow(NOD, i);// делим number на систему счисления в степени i
+        i++;
+        AllZeroz = Math.floor(ZeroCount + AllZeroz);
+    }
+    return AllZeroz;
+};*/
